@@ -5,6 +5,8 @@ import { useGetHotelsQuery } from "../_redux/slices/apiSlice";
 import styles from "./page.module.css";
 import { IHotel } from "../_types/hotel.types";
 import { useState } from 'react';
+import { FilterContainer } from '../_components/FilterContainer';
+import { HotelCard } from '../_components/HotelCard';
 
 export default function Home() {
   const params = useParams();
@@ -28,12 +30,12 @@ export default function Home() {
         <button>Search</button>
       </div>
       <div className={styles.container}>
+        <FilterContainer />
         <div className={styles.hotelsList}>
           {data &&
             data.result.map((hotel: IHotel) => (
               <div key={hotel.id}>
-                <p>{hotel.name}</p>
-                <img src={hotel.firstImage.url} alt="hotel" />
+                <HotelCard hotel={hotel} />
               </div>
             ))}
         </div>

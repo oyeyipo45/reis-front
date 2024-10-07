@@ -1,8 +1,53 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   padding: 1rem;
   min-height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+ gap: 32px;
+}
+
+
+.card {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  box-sizing: border-box;
+  border: 1px solid red;
+  border-radius: 8px;
+  height: 250px;
+}
+
+.hotelsList{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 32px;
+}
+
+.image{
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.filterContainer{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 400px;
+  padding: 1rem;
+  gap: 32px;
+  border: 1px solid red;
+  height: 600px;
+}
+
+.container {
+  display: flex;
+   max-width: 1300px;
 }
