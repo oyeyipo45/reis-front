@@ -11,28 +11,23 @@ export default function Home() {
   const { lang } = params;
  
 
-  const [query, setquery] = useState("")
+  const [name, setName] = useState("")
 
   const { data } = useGetHotelsQuery(
-    { locale: lang as string | "en-US"},
+    { locale: lang as string | "en-US", name},
     {
       refetchOnMountOrArgChange: true,
     }
   );
 
-  
-  
-  console.log(data, "getHotels");
 
   return (
     <main className={styles.main}>
       <div>
-        <input onChange={(e) => setquery(e.target.value)} value={query} />
+        <input onChange={(e) => setName(e.target.value)} value={name} />
         <button>Search</button>
       </div>
       <div className={styles.container}>
-       
-
         <div className={styles.hotelsList}>
           {data &&
             data.result.map((hotel: IHotel) => (
