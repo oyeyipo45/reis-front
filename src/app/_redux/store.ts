@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./slices/apiSlice";
+import { hotelsReducer } from './slices/hotelsSlice';
 
 export const store = configureStore({
   reducer: {
+    hotels: hotelsReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),

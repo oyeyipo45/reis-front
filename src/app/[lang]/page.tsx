@@ -9,37 +9,43 @@ import { FilterContainer } from "../_components/FilterContainer";
 import { HotelCard } from "../_components/HotelCard";
 import { Loading } from "../_components/Loading";
 import { debounce } from "lodash";
+import { useDispatch } from "react-redux";
+import { addHotels } from "../_redux/slices/hotelsSlice";
 
 export default function Home() {
   const params = useParams();
   const { lang } = params;
 
   const [name, setName] = useState("");
+  const [seatchTerm, setSeatchTerm] = useState("");
   const [minPrice, setMinPrice] = useState<number | undefined>();
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
   const [distance, setDistance] = useState<number | undefined>();
 
-
-  const { data, isLoading, isError } = useGetHotelsQuery(
+  const { data, isLoading, isError, isSuccess } = useGetHotelsQuery(
     { locale: lang as string | "en-US", name, distance: Number(distance), minPrice: Number(minPrice), maxPrice: Number(maxPrice) },
     {
       refetchOnMountOrArgChange: true,
     }
   );
 
+  const dispatch = useDispatch();
+
+  dispatch(addHotels(data?.result as IHotel[]));
+
   const result = data?.result as IHotel[];
 
-  const displayHotels = data && result.length > 0;
-  const displayNoHotels = data && result.length === 0;
+  const displayHotels = data && result.length > 0 && isSuccess;
+  const displayNoHotels = data && result.length === 0 && isSuccess;
 
   const handleChange = debounce((value: string) => {
     setName(value);
-  }, 500);
+  });
 
   return (
     <main className={styles.main}>
       <div className={styles.searchInputContainer}>
-        <input placeholder="Search hotel name.." className={styles.searchInput} onChange={(e) => handleChange(e.target.value)} value={name} />
+        <input placeholder="Search hotel name .." className={styles.searchInput} onChange={(e) => handleChange(e.target.value)} value={name} />
       </div>
 
       <div className={styles.container}>
