@@ -29,6 +29,12 @@ export interface Deal {
   details: LocaleDefinition;
 }
 
+export interface IDeal {
+  expireTime: Date;
+  headline: string;
+  details: string;
+}
+
 
 
 export interface IImage {

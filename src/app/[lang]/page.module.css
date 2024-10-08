@@ -298,8 +298,7 @@
 }
 
 .details {
-  max-width: 1400px;
-  border: 1px solid red;
+  max-width: 1300px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -374,4 +373,13 @@
 
 .sliderIcon:hover {
   background: rgba(0, 0, 0, 0.8);
+}
+
+.dealsAndBenefit{
+  display: flex;
+  gap: 40px;
+}
+
+.dealsAndBenefit div {
+  flex: 1;
 }
