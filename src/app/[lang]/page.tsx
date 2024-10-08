@@ -14,28 +14,39 @@ export default function Home() {
   const { lang } = params;
 
   const [name, setName] = useState("");
+  const [minPrice, setMinPrice] = useState<number | undefined>();
+  const [maxPrice, setMaxPrice] = useState<number | undefined>();
+  const [distance, setDistance] = useState<number | undefined>();
+
+  console.log(distance, "distance");
 
   const { data, isLoading, isError } = useGetHotelsQuery(
-    { locale: lang as string | "en-US", name },
+    { locale: lang as string | "en-US", name, distance: Number(distance), minPrice: Number(minPrice), maxPrice: Number(maxPrice) },
     {
       refetchOnMountOrArgChange: true,
     }
   );
 
+  const result = data?.result as IHotel[];
+
+  const displayHotels = data && result.length > 0;
+  const displayNoHotels = data && result.length === 0;
+  
+
   return (
     <main className={styles.main}>
       <div>
         <input onChange={(e) => setName(e.target.value)} value={name} />
-        <button>Search</button>
       </div>
 
       <div className={styles.container}>
-        <FilterContainer />
-        <div className={styles.hotelsList}>
+        <FilterContainer setDistance={setDistance} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
+        <div className={styles.hotelList}>
           {isLoading && <Loading />}
-         
-          {data &&
-            data.result.map((hotel: IHotel) => (
+          {isError && <p>An error occured</p>}
+          {displayNoHotels && <p>No Hotels Available</p>}
+          {displayHotels &&
+            result.map((hotel: IHotel) => (
               <div key={hotel.id}>
                 <HotelCard hotel={hotel} />
               </div>

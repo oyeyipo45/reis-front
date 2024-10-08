@@ -10,9 +10,15 @@ export const apiSlice = createApi({
   baseQuery: baseQuery,
   tagTypes: ["Hotels"],
   endpoints: (builder) => ({
-    getHotels: builder.query<HotelSearchResult, { locale: string; name: string }>({
-      query: ({ locale, name }) => ({
-        url: `v1/recruiting/hotels?lang=${locale}&search=${name}`,
+    getHotels: builder.query<HotelSearchResult, { locale: string; name: string; distance: number; minPrice: number; maxPrice: number }>({
+      query: ({ locale, name, distance, minPrice, maxPrice }) => ({
+        url: `v1/recruiting/hotels?lang=${locale}`,
+        params: {
+          search: name || undefined,
+          distance: distance || undefined,
+          minPrice: minPrice || undefined,
+          maxPrice: maxPrice || undefined,
+        },
       }),
     }),
   }),

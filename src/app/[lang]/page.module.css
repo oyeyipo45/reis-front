@@ -1,3 +1,4 @@
+
 .main {
   display: flex;
   flex-direction: column;
@@ -7,86 +8,85 @@
   min-height: 100vh;
   margin: 0;
   box-sizing: border-box;
- gap: 32px;
+  gap: 32px;
 }
 
 
-.card {
+/* Basic hotel list layout */
+.hotelList {
   display: flex;
-  align-items: center;
-  width: 800px;
-  box-sizing: border-box;
-  border: 1px solid red;
-  border-radius: 8px;
-  height: 250px;
-}
-
-.hotelsList{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
   flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Individual hotel card */
+.hotelCard {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.hotelCard:hover {
+  transform: scale(1.05);
+}
+
+/* Hotel image styling */
+.hotelImage img {
   width: 100%;
-  gap: 32px;
+  height: auto;
+  border-radius: 4px;
 }
 
-.image{
-  object-fit: cover;
-  border-radius: 8px;
+.hotelImage p {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 8px;
+  color: #555;
 }
 
-.filterContainer{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 400px;
-  padding: 1rem;
-  gap: 32px;
-  border: 1px solid red;
-  height: 600px;
+/* Hotel information styling */
+.hotelInfo {
+  margin-top: 10px;
+}
+
+.hotelInfo h2 {
+  margin: 5px 0;
+  font-size: 1.4rem;
+}
+
+.hotelInfo p {
+  margin: 5px 0;
+  color: #333;
+}
+
+/* Deal styling */
+.hotelDeal {
+  background-color: #f8f9fa;
+  border: 1px solid #dedede;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.hotelDeal h3 {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  color: #007bff;
 }
 
 .container {
   display: flex;
-   max-width: 1300px;
-}
-
-
-
-.loadingList {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.loadingListDots {
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-}
-
-.loadingListDot {
-  width: 300px;
-  height: 200px;
-  border: 2px solid #ccc;
-  animation: bounce 1s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1);
-  }
+  max-width: 1300px;
 }
 
 .skeletonContainer {
   display: flex;
   flex-direction: column;
+  align-items: start;
   gap: 20px;
 }
 
@@ -107,4 +107,24 @@
   100% {
     background-color: #f0f0f0;
   }
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.button {
+  font-size: 1rem;
 }
