@@ -8,6 +8,7 @@ import { useState } from "react";
 import { FilterContainer } from "../_components/FilterContainer";
 import { HotelCard } from "../_components/HotelCard";
 import { Loading } from "../_components/Loading";
+import { debounce } from "lodash";
 
 export default function Home() {
   const params = useParams();
@@ -18,7 +19,6 @@ export default function Home() {
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
   const [distance, setDistance] = useState<number | undefined>();
 
-  console.log(distance, "distance");
 
   const { data, isLoading, isError } = useGetHotelsQuery(
     { locale: lang as string | "en-US", name, distance: Number(distance), minPrice: Number(minPrice), maxPrice: Number(maxPrice) },
@@ -31,12 +31,15 @@ export default function Home() {
 
   const displayHotels = data && result.length > 0;
   const displayNoHotels = data && result.length === 0;
-  
+
+  const handleChange = debounce((value: string) => {
+    setName(value);
+  }, 500);
 
   return (
     <main className={styles.main}>
       <div className={styles.searchInputContainer}>
-        <input placeholder="Search hotels" className={styles.searchInput}  onChange={(e) => setName(e.target.value)} value={name} />
+        <input placeholder="Search hotel name.." className={styles.searchInput} onChange={(e) => handleChange(e.target.value)} value={name} />
       </div>
 
       <div className={styles.container}>
