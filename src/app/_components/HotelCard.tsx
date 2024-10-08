@@ -9,7 +9,7 @@ export function HotelCard({ hotel }: { hotel: IHotel }) {
       <>
         <div className={styles.hotelCard}>
           <div className={styles.hotelImage}>
-            <img src={hotel.firstImage.url} alt={hotel.firstImage.caption} />
+            <img height={200} src={hotel.firstImage.url} alt={hotel.firstImage.caption} />
             <p>{hotel.firstImage.caption}</p>
           </div>
           <div className={styles.hotelInfo}>
@@ -23,13 +23,13 @@ export function HotelCard({ hotel }: { hotel: IHotel }) {
             <p>
               <strong>Distance to center:</strong> {hotel.distanceToCenterkm} km
             </p>
-            <div className={styles.hotelDeal}>
+            {/* <div className={styles.hotelDeal}>
               <h3>Deal: {hotel.firstDeal.headline}</h3>
               <p>{hotel.firstDeal.details}</p>
               <p>
                 <strong>Expires on:</strong> {new Date(hotel.firstDeal.expireTime).toLocaleDateString()}
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </>

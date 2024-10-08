@@ -31,7 +31,7 @@ export interface Deal {
 
 
 
-export interface Image {
+export interface IImage {
   url: string;
   caption: LocaleDefinition;
 }
@@ -59,3 +59,4 @@ export interface HotelSearchResult {
   success: boolean;
   error : string
 }
+

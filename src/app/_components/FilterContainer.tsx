@@ -11,7 +11,7 @@ export function FilterContainer(props: IFilterContainer) {
   const { setDistance, setMinPrice, setMaxPrice } = props;
   return (
     <div className={styles.filterContainer}>
-      <p>Search Filters</p>
+      <p>Filters</p>
 
       <div>
         <p>What is your minimun budget per night?</p>

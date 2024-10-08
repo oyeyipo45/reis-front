@@ -35,8 +35,8 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <div>
-        <input onChange={(e) => setName(e.target.value)} value={name} />
+      <div className={styles.searchInputContainer}>
+        <input placeholder="Search hotels" className={styles.searchInput}  onChange={(e) => setName(e.target.value)} value={name} />
       </div>
 
       <div className={styles.container}>
