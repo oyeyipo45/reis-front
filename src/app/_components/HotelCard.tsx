@@ -2,11 +2,16 @@
 
 import { IHotel } from "../_types/hotel.types";
 import styles from "../[lang]/page.module.css";
+import { useParams, useRouter } from "next/navigation";
 
 export function HotelCard({ hotel }: { hotel: IHotel }) {
+  const router = useRouter()
+  const params = useParams();
+
+  const { lang } = params;
   return (
     <>
-      <div className={styles.hotelCard}>
+      <div className={styles.hotelCard} onClick={() => router.push(`/${lang}/hotel/${hotel.id}`)}>
         <div className={styles.hotelImage}>
           <img height={200} src={hotel.firstImage.url} alt={hotel.firstImage.caption} />
           <p>{hotel.firstImage.caption}</p>

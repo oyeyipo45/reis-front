@@ -60,3 +60,8 @@ export interface HotelSearchResult {
   error : string
 }
 
+
+export interface HotelResult {
+  result: IHotel;
+}
+

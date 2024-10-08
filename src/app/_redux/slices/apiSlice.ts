@@ -1,4 +1,4 @@
-import { HotelSearchResult } from "@/app/_types/hotel.types";
+import { HotelResult, HotelSearchResult, IHotel } from "@/app/_types/hotel.types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
@@ -21,7 +21,15 @@ export const apiSlice = createApi({
         },
       }),
     }),
+    getHotel: builder.query<any, { id: string; locale: string }>({
+      query: ({ locale, id }) => ({
+        url: `v1/recruiting/hotels/${id}?lang=${locale}`,
+      }),
+      transformResponse: (response: any) => {
+        return response && (response.result[0] as IHotel);
+      },
+    }),
   }),
 });
 
-export const { useGetHotelsQuery } = apiSlice;
+export const { useGetHotelsQuery, useGetHotelQuery } = apiSlice;
