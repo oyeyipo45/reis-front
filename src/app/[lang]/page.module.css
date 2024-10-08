@@ -51,3 +51,60 @@
   display: flex;
    max-width: 1300px;
 }
+
+
+
+.loadingList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.loadingListDots {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.loadingListDot {
+  width: 300px;
+  height: 200px;
+  border: 2px solid #ccc;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+.skeletonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skeletonItem {
+  background-color: red;
+  height: 250px;
+  width: 600px;
+  animation: shimmer 1s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-color: #f0f0f0;
+  }
+  50% {
+    background-color: #f5f5f5;
+  }
+  100% {
+    background-color: #f0f0f0;
+  }
+}
