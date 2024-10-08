@@ -26,10 +26,7 @@ export const apiSlice = createApi({
     getHotel: builder.query<any, { id: string; locale: string }>({
       query: ({ locale, id }) => ({
         url: `v1/recruiting/hotels/${id}?lang=${locale}`,
-      }),
-      transformResponse: (response: any) => {
-        return response && (response.result[0] as IHotel);
-      },
+      })
     }),
   }),
 });

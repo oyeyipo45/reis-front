@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import { IHotel } from "@/app/_types/hotel.types";
+import { IHotel, IImage } from "@/app/_types/hotel.types";
 import { useGetHotelQuery } from "@/app/_redux/slices/apiSlice";
 import { useParams, useRouter } from "next/navigation";
 import styles from "../../page.module.css";
+import ImageSlider from '@/app/_components/ImageSlider';
 
 interface HotelDetailsProps {
   hotel: IHotel;
@@ -17,11 +18,14 @@ const HotelDetails: React.FC<HotelDetailsProps> = () => {
   const { id, lang } = params;
   const { data } = useGetHotelQuery({ id: id as string, locale: lang as string });
 
-  const hotel = data && (data as IHotel);
+  console.log(data, "data");
+  
+
+  const hotel = data && (data.result as IHotel);
 
 
   return (
-    <>
+    <div className={styles.details}>
       <div className={styles.back} onClick={() => router.back()}>
         Back
       </div>
@@ -29,12 +33,14 @@ const HotelDetails: React.FC<HotelDetailsProps> = () => {
         <div className={styles.hotelDetailsContainer}>
           <h1>{hotel.name}</h1>
           <div className={styles.hotelDetails}>
-            <div className={styles.hotelImages}>
+            {/* <div className={styles.hotelImages}>
               <div className={styles.hotelImage}>
                 <img src={hotel.firstImage.url} alt={hotel.firstImage.caption} />
                 <p>{hotel.firstImage.caption}</p>
               </div>
-            </div>
+            </div> */}
+            <ImageSlider images={hotel.images.map((image : IImage) => ({ url: image.url, caption: image.caption }))} />
+
             <div className={styles.hotelInfo}>
               <p>
                 <strong>Address:</strong> {hotel.address}, {hotel.city}
@@ -65,7 +71,7 @@ const HotelDetails: React.FC<HotelDetailsProps> = () => {
           </div>
         </div>
       )}{" "}
-    </>
+    </div>
   );
 };
 

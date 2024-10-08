@@ -56,7 +56,7 @@
 
 .hotelCard:hover {
   transform: scale(1.05);
-   cursor : pointer;
+  cursor: pointer;
 }
 
 /* Hotel image styling */
@@ -242,10 +242,8 @@
   box-sizing: border-box;
 }
 
-
 .hotelDetailsContainer {
   padding: 20px;
-  
 }
 
 .hotelDetails {
@@ -290,7 +288,6 @@
   color: #007bff;
 }
 
-
 .back {
   margin-left: 20px;
   padding: 10px;
@@ -298,4 +295,83 @@
   border-radius: 5px;
   cursor: pointer;
   width: 35px;
+}
+
+.details {
+  max-width: 1400px;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.imageSlider {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sliderImageContainer {
+  position: relative;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.slideImage {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.sliderCaption {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.sliderControls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.sliderBtn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.sliderBtn:hover {
+  background-color: #0056b3;
+}
+
+.sliderIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.leftIcon {
+  left: 10px;
+}
+
+.rightIcon {
+  right: 10px;
+}
+
+.sliderIcon:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
