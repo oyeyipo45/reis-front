@@ -11,6 +11,7 @@ import { Loading } from "../_components/Loading";
 import { debounce } from "lodash";
 import { useDispatch } from "react-redux";
 import { addHotels } from "../_redux/slices/hotelsSlice";
+import { Logo } from '../../../public/asessts';
 
 export default function Home() {
   const params = useParams();
@@ -55,6 +56,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.searchInputContainer}>
+        <img src={Logo.src} className={styles.logo} width={320} height={100} alt="Reisetopia" />
         <input placeholder="Search hotel name .." className={styles.searchInput} onChange={(e) => handleChange(e.target.value)} value={name} />
       </div>
 
