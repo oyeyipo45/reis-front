@@ -53,9 +53,9 @@ const HotelDetails: React.FC<HotelDetailsProps> = () => {
           </div>
           <div className={styles.dealsAndBenefit}>
             <div>
-              <h2>Deals</h2>
               {hotel.deals.length > 0 && hotel.deals ? (
                 <div className={styles.hotelDeal}>
+                  <h3>Deals</h3>
                   {hotel.deals.map((deal: IDeal, index: number) => (
                     <div key={index}>
                       <p>
@@ -76,9 +76,9 @@ const HotelDetails: React.FC<HotelDetailsProps> = () => {
             </div>
 
             <div>
-              <h2>Benefits</h2>
               {hotel.benefits.length > 0 && hotel.benefits ? (
                 <div className={styles.hotelDeal}>
+                  <h3>Benefits</h3>
                   <ul>
                     {hotel.benefits.map((benefit: { text: string }, index: number) => (
                       <div key={index}>
