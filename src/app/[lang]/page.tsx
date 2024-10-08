@@ -21,9 +21,19 @@ export default function Home() {
   const [minPrice, setMinPrice] = useState<number | undefined>();
   const [maxPrice, setMaxPrice] = useState<number | undefined>();
   const [distance, setDistance] = useState<number | undefined>();
+  const [longitude, setLongitude] = useState<number | undefined>();
+  const [latitude, setLatitude] = useState<number | undefined>();
 
   const { data, isLoading, isError, isSuccess } = useGetHotelsQuery(
-    { locale: lang as string | "en-US", name, distance: Number(distance), minPrice: Number(minPrice), maxPrice: Number(maxPrice) },
+    {
+      locale: lang as string | "en-US",
+      name,
+      distance: Number(distance),
+      minPrice: Number(minPrice),
+      maxPrice: Number(maxPrice),
+      lat: Number(latitude),
+      lng: Number(longitude),
+    },
     {
       refetchOnMountOrArgChange: true,
     }
@@ -49,7 +59,7 @@ export default function Home() {
       </div>
 
       <div className={styles.container}>
-        <FilterContainer setDistance={setDistance} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
+        <FilterContainer setDistance={setDistance} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} setLongitude={setLongitude} setLatitude={setLatitude} />
         <div className={styles.hotelList}>
           {isLoading && <Loading />}
           {isError && <p>An error occured</p>}
