@@ -12,6 +12,7 @@ import { debounce } from "lodash";
 import { useDispatch } from "react-redux";
 import { addHotels } from "../_redux/slices/hotelsSlice";
 import { Logo } from '../../../public/asessts';
+import Image from 'next/image';
 
 export default function Home() {
   const params = useParams();
@@ -25,7 +26,7 @@ export default function Home() {
   const [longitude, setLongitude] = useState<number | undefined>();
   const [latitude, setLatitude] = useState<number | undefined>();
 
-  const { data, isLoading, isError, isSuccess } = useGetHotelsQuery(
+  const { data, isLoading, isError, isSuccess, isFetching } = useGetHotelsQuery(
     {
       locale: lang as string | "en-US",
       name,
@@ -46,7 +47,7 @@ export default function Home() {
 
   const result = data?.result as IHotel[];
 
-  const displayHotels = data && result.length > 0 && isSuccess;
+  const displayHotels = data && result.length > 0 && !isFetching;
   const displayNoHotels = data && result.length === 0 && isSuccess;
 
   const handleChange = debounce((value: string) => {
@@ -56,8 +57,8 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.searchInputContainer}>
-        <img src={Logo.src} className={styles.logo} width={320} height={100} alt="Reisetopia" />
-        <input placeholder="Search hotel name .." className={styles.searchInput} onChange={(e) => handleChange(e.target.value)} value={name} />
+        <Image src={Logo.src} className={styles.logo} width={320} height={100} alt="Reisetopia" />
+        <input placeholder="Search hotel name .." className={styles.searchInput} onChange={(e) => handleChange(e.target.value)} />
       </div>
 
       <div className={styles.container}>
