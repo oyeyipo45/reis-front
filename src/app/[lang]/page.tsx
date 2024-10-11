@@ -64,7 +64,7 @@ export default function Home() {
       <div className={styles.container}>
         <FilterContainer setDistance={setDistance} setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} setLongitude={setLongitude} setLatitude={setLatitude} />
         <div className={styles.hotelList}>
-          {isLoading && <Loading />}
+          {isFetching && <Loading />}
           {isError && <p>An error occured</p>}
           {displayNoHotels && <p>No Hotels Available</p>}
           {displayHotels &&
